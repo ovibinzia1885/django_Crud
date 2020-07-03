@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-hover table-dark">
+  <form  method="POST" action="{% url 'search' %}" >
+     {% csrf_token %}
+      <td>
+        <tr><input name="name"></tr>
+        <tr><button type="submit">Search</button></tr>
+      </td>
+
+  </form>
+  <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">studentid</th>
+      <th scope="col">age</th>
+      <th scope="col">section</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for value in infro %}
+    <tr>
+      <td>{{value.name}}</td>
+      <td>{{value.email}}</td>
+      <td>{{value.studentid}}</td>
+      <td>{{value.age}}</td>
+      <td>{{value.section}}</td>
+      <td>
+
+        <a class="btn btn-danger" href="/delete/{{value.id }}" >Delete</a>
+          <a href="/edit/{{ value.id }}" type="button" class="btn btn-primary" >Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
+

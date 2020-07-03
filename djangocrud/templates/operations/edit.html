@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h2>student</h2>
+    <hr>
+
+    <form action="{% url 'update' value.id %}" method="post">
+        {% csrf_token %}
+
+<label class="form-group" for="title">Name: </label>
+<input class="form-control" type="text" name="name" value="{{value.name}}" placeholder="{{value.name}}">
+
+<label class="form-group" for="price">email: </label>
+<input class="form-control" type="email" name="email" value="{{value.email}}" placeholder="{{value.email}}">
+
+<label class="form-group" for="author">studentid: </label>
+<input class="form-control" type="text" name="studentid" value="{{value.studentid}}" placeholder="{{value.studentid}}">
+<label class="form-group" for="title">age: </label>
+<input class="form-control" type="text" name="age" value="{{value.age}}" placeholder="{{value.age}}">
+<label class="form-group" for="title">scetion: </label>
+<input class="form-control" type="text" name="section" value="{{value.section}}" placeholder="{{value.section}}"><br>
+<input class="btn btn-primary" type="submit" value="submit" >
+    </form>
+    {% endblock %}
